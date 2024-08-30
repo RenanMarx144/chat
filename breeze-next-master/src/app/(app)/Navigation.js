@@ -24,7 +24,8 @@ const Navigation = ({ user }) => {
                         {/* Logo */}
                         <div className="flex-shrink-0 flex items-center">
                             <Link href="/dashboard">
-                                <ApplicationLogo className="block h-10 w-auto fill-current text-gray-600" />
+                                {/* <ApplicationLogo className="block h-10 w-auto fill-current text-gray-600" /> */}
+                                <img src="https://img.icons8.com/?size=100&id=Ino0Uz3ipz3d&format=png&color=000000" alt="Logo" className="h-10 w-auto fill-current text-gray-600" />
                             </Link>
                         </div>
 
@@ -33,7 +34,17 @@ const Navigation = ({ user }) => {
                             <NavLink
                                 href="/dashboard"
                                 active={usePathname() === '/dashboard'}>
-                                Dashboard
+                                Chat
+                            </NavLink>
+                            <NavLink
+                                href="/users"
+                                active={usePathname() === '/users'}>
+                                Usuários
+                            </NavLink>
+                            <NavLink
+                                href="/history"
+                                active={usePathname() === '/history'}>
+                                Histórico
                             </NavLink>
                         </div>
                     </div>
