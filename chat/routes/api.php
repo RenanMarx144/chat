@@ -11,6 +11,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     });
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
+    Route::delete('/user/destroy/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
     Route::get('/message/{id}', [MessageController::class,'listMessages'])->name('massage.listMessages');
     Route::post('/massages', [MessageController::class,'store'])->name('massage.store');
 });

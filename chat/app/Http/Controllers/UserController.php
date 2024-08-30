@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UsersRequest;
 use App\Models\User;
+use Illuminate\Foundation\Auth\User as AuthUser;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response as HttpFoundationResponse;
 
@@ -24,8 +25,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(User $user)
+    public function show($id)
     {
+        $user = User::find($id);
         return response()->json($user, HttpFoundationResponse::HTTP_OK);
     }
     /**
@@ -46,9 +48,11 @@ class UserController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
 
-    public function update(UsersRequest $request, User $user)
+    public function update(UsersRequest $request,$id)
     {
-        $user->update($request->all());
+        $user = User::find($id);
+        $validatedData = $request->validated();
+        $user->update($validatedData);
         return response()->json($user, HttpFoundationResponse::HTTP_OK);
     }
     /**
@@ -56,8 +60,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
+        $user = User::find($id);
         $user->delete();
         return response()->json(HttpFoundationResponse::HTTP_OK);
     }
